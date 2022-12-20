@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+    <h2>Добавление фильмов</h2>
+    <form method = "post">
+        {% csrf_token %}
+        <p>
+            <label>Введите название фильма</label>
+            <input type="text" name = "name" />
+        </p>
+        <p>
+            <label for="">Введите дату релиза</label>
+            <input type="date" name="release_date"  required=True />
+        </p>
+        <p>
+            <label for="">Введите актеров</label>
+            <textarea name="actors"></textarea>
+        </p>
+        <p>
+            <label for="">Введите дату показа</label>
+            <input type="date" name="show_date" required=True />
+        </p>
+        <p>
+            <label for="">Введите категорию</label>
+            <select  name="category">
+            {% for category in categories %}
+                <option value = "{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+            </select>
+        </p>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>
